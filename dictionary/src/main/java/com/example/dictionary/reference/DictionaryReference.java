@@ -29,7 +29,7 @@ public class DictionaryReference {
         }
     }
 
-    private DictionaryReference(){
+    private DictionaryReference() {
 
     }
 
@@ -38,10 +38,12 @@ public class DictionaryReference {
         StopWatch sw = new StopWatch();
         sw.start();
 
-        InputStream inputStream = DictionaryReference.class.getClassLoader().getResourceAsStream("dictionary.json");
+        InputStream inputStream = DictionaryReference.class.getClassLoader()
+                .getResourceAsStream("dictionary.json");
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-        String json = bufferedReader.lines().collect(Collectors.joining("\n"));
+        String json = bufferedReader.lines()
+                .collect(Collectors.joining("\n"));
 
         ObjectMapper mapper = new ObjectMapper();
         dictionary = mapper.readValue(json, Map.class);
@@ -61,7 +63,7 @@ public class DictionaryReference {
 
     }
 
-    public static Map<String, String> getDictionary(){
+    public static Map<String, String> getDictionary() {
         return DictionaryReference.dictionary;
     }
 
